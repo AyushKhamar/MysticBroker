@@ -7,11 +7,13 @@ import { userRouter } from "./routes/user.route.js";
 import { postRouter } from "./routes/post.route.js";
 import { notificationRouter } from "./routes/notification.route.js";
 import { connectionRouter } from "./routes/connection.route.js";
+import cors from "cors";
 dotenv.config();
 const app = express();
-app.use(express.json());
+app.use(express.json({ limit: "30mb" }));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/users", userRouter);
