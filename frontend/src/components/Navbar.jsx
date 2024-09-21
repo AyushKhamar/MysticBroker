@@ -86,7 +86,7 @@ const Navbar = () => {
                   )}
                 </Link>
                 <Link
-                  to={`/profile/${authUser.username}`}
+                  to={`/profile/${authUser.content.username}`}
                   className="text-neutral flex flex-col items-center"
                 >
                   <User size={20} />
