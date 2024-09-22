@@ -56,7 +56,8 @@ export const acceptConnectionRequest = async (req, res) => {
         message: "Connection request not found",
       });
     // Check if the recipient is the current user
-    if (request.recipient.toString() !== req.user._id.toString())
+    console.log(request.recipient._id.toString(), req.user._id.toString());
+    if (request.recipient._id.toString() !== req.user._id.toString())
       return res.status(401).json({
         success: false,
         message: "You are not authorized to accept this request",
