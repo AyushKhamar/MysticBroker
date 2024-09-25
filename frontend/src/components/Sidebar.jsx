@@ -2,26 +2,30 @@ import { Link } from "react-router-dom";
 import { Home, UserPlus, Bell } from "lucide-react";
 
 export default function Sidebar({ user }) {
+  console.log("This is from sidebar", user);
   return (
     <div className="bg-secondary rounded-lg shadow">
       <div className="p-4 text-center">
         <div
           className="h-16 rounded-t-lg bg-cover bg-center"
           style={{
-            backgroundImage: `url("${user.bannerImg || "/banner.png"}")`,
+            backgroundImage: `url("${
+              user.content.bannerImg || "/banner.png"
+            }")`,
           }}
         />
-        <Link to={`/profile/${user.username}`}>
+        <Link to={`/profile/${user.content.username}`}>
           <img
-            src={user.profilePicture || "/avatar.png"}
-            alt={user.name}
+            src={user.content.profilePicture || "/avatar.png"}
+            alt={user.content.name}
             className="w-20 h-20 rounded-full mx-auto mt-[-40px]"
           />
-          <h2 className="text-xl font-semibold mt-2">{user.name}</h2>
+          <h2 className="text-xl font-semibold mt-2">{user.content.name}</h2>
         </Link>
-        <p className="text-info">{user.headline}</p>
+        <p className="text-info">{user.content.headline}</p>
         <p className="text-info text-xs">
-          {user.connections ? user.connections.length : 0} connections
+          {user.content.connections ? user.content.connections.length : 0}{" "}
+          connections
         </p>
       </div>
       <div className="border-t border-base-100 p-4">
@@ -56,7 +60,7 @@ export default function Sidebar({ user }) {
       </div>
       <div className="border-t border-base-100 p-4">
         <Link
-          to={`/profile/${user.username}`}
+          to={`/profile/${user.content.username}`}
           className="text-sm font-semibold"
         >
           Visit your profile

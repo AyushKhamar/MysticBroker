@@ -8,6 +8,9 @@ import { useQuery } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { axiosInstance } from "./utils/axios.js";
 import NotificationsPage from "./pages/NotificationPage.jsx";
+import NetworkPage from "./pages/NetworkPage.jsx";
+import PostPage from "./pages/PostPage.jsx";
+import ProfilePage from "./pages/ProfilePage.jsx";
 function App() {
   const { data: authUser, isLoading } = useQuery({
     queryKey: ["authUser"],
@@ -45,6 +48,18 @@ function App() {
           element={
             authUser ? <NotificationsPage /> : <Navigate to={"/login"} />
           }
+        />
+        <Route
+          path="/network"
+          element={authUser ? <NetworkPage /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/post/:postId"
+          element={authUser ? <PostPage /> : <Navigate to={"/login"} />}
+        />
+        <Route
+          path="/profile/:username"
+          element={authUser ? <ProfilePage /> : <Navigate to={"/login"} />}
         />
       </Routes>
       <Toaster />

@@ -63,13 +63,13 @@ const PostCreation = ({ user }) => {
       reader.readAsDataURL(file);
     });
   };
-
+  console.log("This is post creation page", user);
   return (
     <div className="bg-secondary rounded-lg shadow mb-4 p-4">
       <div className="flex space-x-3">
         <img
-          src={user.profilePicture || "/avatar.png"}
-          alt={user.name}
+          src={user.content.profilePicture || "/avatar.png"}
+          alt={user.content.name}
           className="size-12 rounded-full"
         />
         <textarea
